@@ -55,5 +55,29 @@ windower.register_event('incoming text', function(original, modified, original_m
 	if original:strip_format() == "Synthesis canceled." or original:strip_format() == 'Unable to execute that command. Your inventory is full.' then
 		--continue = 0
 		notice('Inventory is full')
+		inventory_available()
+		local i = 0
+		while i < count_item do
+			if inventory[index].id == 3853 then
+				windower.send_command('input /item'inventory[index].id'<t>')
+				--coroutine.sleep(5)
+			end
+			coroutine.sleep(5)
+			i = i + 1
+			notice(i)
+		end
 	end
 end)
+
+function inventory_available()
+    local count = 0
+    count_item = 0
+    local inventory = windower.ffxi.get_items().inventory
+    for index=1,inventory.max do
+        if inventory[index].id == 3853 then
+            count = inventory[index].count
+            count_item = count_item + count 
+        end	
+    end
+    return count
+end
