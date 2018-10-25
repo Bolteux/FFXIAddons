@@ -1,3 +1,3 @@
 # FFXIAddons
 
-Bolteux addons from Quetz. Thanks
+Bolteux from Quetz. Thanks
